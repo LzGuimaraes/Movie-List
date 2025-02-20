@@ -1,4 +1,4 @@
-:root{
+:root {
     --primary-color: #03045e;
     --light-primary: #0077b6;
     --lightest-color: #ffffff;
@@ -8,7 +8,7 @@
 
 #modal-overlay {
     display: flex;
-    position:fixed;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -17,18 +17,18 @@
     align-items: center;
 }
 
-.overlay{
+.overlay {
     visibility: hidden;
     transition: all 0.3s ease;
     opacity: 0;
 }
 
-.open{
+.open {
     visibility: visible;
     opacity: 1;
 }
 
-#modal-background{
+#modal-background {
     background-color: var(--light-primary);
     width: 100%;
     height: 100%;
@@ -42,22 +42,27 @@
     background-color: var(--lightest-color);
     padding: 1rem 3rem;
     border-radius: 10px;
+    max-width: 90%; /* Limita a largura máxima do modal */
+    margin: 0 auto; /* Centraliza o modal */
 }
 
-#movie-title{
-    /* align-items: center;
-    display: flex; */
+#movie-title {
     padding: 1rem 0;
+    text-align: center; /* Centraliza o título */
 }
 
 #modal-body {
     display: flex;
     justify-content: center;
     padding: 1rem 0;
+    flex-direction: column; /* Coloca os itens em coluna em telas pequenas */
+    align-items: center; /* Centraliza os itens */
 }
 
-#movie-poster{
+#movie-poster {
     border-radius: 10px;
+    max-width: 100%; /* Garante que a imagem não ultrapasse o container */
+    height: auto; /* Mantém a proporção da imagem */
 }
 
 #movie-info {
@@ -65,20 +70,56 @@
     flex-direction: column;
     justify-content: space-around;
     max-width: 300px;
-    padding-left: 2rem;
+    padding-left: 0; /* Remove o padding em telas pequenas */
+    margin-top: 1rem; /* Adiciona espaço entre a imagem e as informações */
+    text-align: center; /* Centraliza o texto */
 }
 
-#add-to-list{
+#add-to-list {
     border: 3px solid var(--primary-color);
     padding: 0.3rem 0;
     width: 100%;
     border-radius: 10px;
     font-weight: bold;
     box-shadow: 2px 2px 10px #000;
+    cursor: pointer; /* Adiciona um cursor pointer para indicar que é clicável */
 }
 
-#add-to-list:focus, 
+#add-to-list:focus,
 #add-to-list:hover {
     background-color: var(--light-primary);
     color: var(--lightest-color);
+}
+
+/* Media Queries para Responsividade */
+
+/* Telas menores que 768px (tablets e celulares) */
+@media (max-width: 768px) {
+    #modal-container {
+        padding: 1rem; /* Reduz o padding em telas menores */
+    }
+
+    #modal-body {
+        flex-direction: column; /* Coloca a imagem e as informações em coluna */
+    }
+
+    #movie-info {
+        padding-left: 0; /* Remove o padding à esquerda */
+        margin-top: 1rem; /* Adiciona espaço entre a imagem e as informações */
+    }
+}
+
+/* Telas menores que 480px (celulares pequenos) */
+@media (max-width: 480px) {
+    #modal-container {
+        padding: 0.5rem; /* Reduz ainda mais o padding */
+    }
+
+    #movie-title {
+        font-size: 1.2rem; /* Reduz o tamanho da fonte do título */
+    }
+
+    #add-to-list {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte do botão */
+    }
 }
