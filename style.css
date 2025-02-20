@@ -30,7 +30,6 @@ header {
     padding: 1.5rem 1rem;
     background-color: var(--primary-color);
     color: var(--lightest-color);
-    flex-wrap: wrap; /* Permite que os itens do header quebrem para a próxima linha em telas pequenas */
 }
 
 #search-container {
@@ -108,14 +107,11 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 200px; /* Largura fixa para cada filme */
 }
 
 #movie-list article > img {
     border-radius: 10px;
     margin-bottom: 0.5rem;
-    width: 100%; /* Garante que a imagem ocupe 100% do container */
-    height: auto; /* Mantém a proporção da imagem */
 }
 
 .remove-button {
@@ -134,52 +130,48 @@ main {
     color: var(--lightest-color);
 }
 
-/* Media Queries para Responsividade */
-
-/* Telas menores que 768px (tablets e celulares) */
 @media (max-width: 768px) {
     header {
-        flex-direction: column; /* Coloca os itens do header em coluna */
+        flex-direction: column;
         align-items: center;
-        gap: 1rem; /* Adiciona espaço entre os itens */
+        text-align: center;
     }
 
     #search-container {
-        width: 100%; /* Ocupa toda a largura */
+        width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
     }
 
-    .movie-name-wrapper {
-        width: 100%; /* Ocupa toda a largura */
-    }
-
-    .movie-year-wrapper {
-        width: 100%; /* Ocupa toda a largura */
+    .movie-name-wrapper, .movie-year-wrapper {
+        width: 100%;
         justify-content: center;
-    }
-
-    #movie-list article {
-        width: 150px; /* Reduz a largura dos artigos em telas menores */
-    }
-}
-
-/* Telas menores que 480px (celulares pequenos) */
-@media (max-width: 480px) {
-    header {
-        padding: 1rem; /* Reduz o padding */
     }
 
     .movie-name-wrapper > input,
     .movie-year-wrapper > input {
-        margin: 0 0.2rem; /* Reduz a margem */
-        padding: 0.2rem; /* Reduz o padding */
+        width: 90%;
+        max-width: 250px;
     }
 
-    #movie-list article {
-        width: 100%; /* Ocupa toda a largura em telas muito pequenas */
+    #search-button {
+        width: 30px;
+        height: 30px;
     }
 
     #movie-list {
-        gap: 1rem; /* Reduz o espaço entre os filmes */
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    #movie-list article {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .remove-button {
+        width: 100%;
+        padding: 0.5rem 0;
     }
 }
